@@ -8,10 +8,10 @@ export async function handleAllPosts() {
     //     token: localStorage.getItem("user_token"),
     //   },
     // });
+    
+    const response = await axiosInterceptor.get('/posts')
+    
     // console.log(response.data.data.posts);
-
-const response = await axiosInterceptor.get('/posts')
-
     return response.data.data.posts
 
   } catch (error) {

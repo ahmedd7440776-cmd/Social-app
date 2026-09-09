@@ -4,18 +4,11 @@ import axios from 'axios'
 import { Check } from 'iconsax-reactjs'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import {  useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import * as zod from 'zod'
 import { loginSchema } from './login.valdation'
 import { useContext } from 'react'
 import { UserTokenProvider } from '../AuthUserContext'
-
-
-
-
-
-
-
 
 function Login() {
   // const [isLoading, setIsLoading] = useState(false)
@@ -47,55 +40,38 @@ function Login() {
   // const unique = Array.from(new Map (old.map(item =>[item.id,item])).values())
   // console.log(unique);
 
-
-  const {setUserData}= useContext(UserTokenProvider)
+  const { setUserData } = useContext(UserTokenProvider)
   const navgation = useNavigate()
-  
+
   // call api inside this fun=======> FUNCTION
 
   async function handleUserSubmit(userData) {
     // console.log(userData);
-    
-    await toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signin`, userData), {
+
+await toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signin`
+      , userData), {
       loading: 'please wait...',
-      
       success: function (response) {
         localStorage.setItem('user_token', response.data.data.token)
-
-        getUserData().then(function(data){
+        getUserData().then(function (data) {
           setUserData(data)
         })
-        
         setUserData(response.data.data.token)
-        // console.log(response.data.data.token);
-                // reset()
 
-  navgation('/posts') 
+        navgation('/posts')
 
-
-                return <h1 className='text-green-500'>{response.data.message}</h1>
+        return <h1 className='text-green-500'>{response.data.message}</h1>
       },
 
       error: function (x) {
-        // console.log(x);
-        
+      
         return <h1 className='text-red-500 text-center'>
           {x.response.data.message}
-          </h1>
-      }
-    })
+        </h1>
+}})
 
- 
   }
-//   if (axios.isAxiosError(error)) {
-//     throw new Error(error.response?.data.message)
-//   }
-//   throw new Error('Network Error')
-// }
-
-
   return (
-
     <form onSubmit={handleSubmit(handleUserSubmit)} className='min-w-xl flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
       <h1 className='text-center mx-auto rounded-2xl text-sky-500 pb-2 px-2 text-2xl font-meduim shadow-xl w-fit '>
         Login page</h1>
@@ -104,10 +80,7 @@ function Login() {
       <TextField type='email'>
         <Label>Email</Label>
         <Input {...register('email')} placeholder='Enter your email.... (example@gmail.com)' />
-
       </TextField>
-
-
 
       {/* password  */}
       <TextField type='password'>
@@ -117,11 +90,8 @@ function Login() {
       {/* {errors.password && <span className='text-red-500'>{errors.password.message}</span>} */}
       {/* className='focus:ring-red-400'    to chang the shadoe in input */}
 
-
-
       <div className="flex  flex-col gap-2">
         <Button className='w-full' type='submit' isPending={isSubmitting}>
-
           {isSubmitting ? <Spinner color='current' size='lg' /> : <>  <Check />
             Submit</>}
         </Button>

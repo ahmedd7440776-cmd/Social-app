@@ -12,8 +12,6 @@ export default function usePostDetails(id) {
 
         return axiosInterceptor.get(`/posts/${id}`)
     }
-
-
     function getPostComments() {
         return axios.get(`${import.meta.env.VITE_BASE_URL}/posts/${id}/comments`, {
             headers: {
@@ -21,9 +19,6 @@ export default function usePostDetails(id) {
             }
         })
     }
-// console.log(id);
-
-
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['postDetails', id],
         queryFn: getSinglePost,
@@ -36,18 +31,34 @@ export default function usePostDetails(id) {
     // console.log('RAW ', commentData);
 
     const queryClient = useQueryClient()
-    
-    function addComment(comment) {
-        return axios.post(`${import.meta.env.VITE_BASE_URL}/comments`,
-            { content: comment, post: id },
-            { headers: { token: localStorage.getItem('user_token') } }
-        )
-    }
-// async function call() {
-//     console.log( await addComment());
 
-// }
-// call()
+    function addComment(comment) {
+        const formData = new FormData()
+        formData.append('content', comment.content)
+        if (comment.image) {
+            formData.append('image', comment.image)
+        }
+        return axios.post(
+            `${import.meta.env.VITE_BASE_URL}/posts/${id}/comments`, formData, {
+            headers: {
+                    Authorization: ` Bearer ${localStorage.getItem('user_token')}`
+            }})}
+
+
+
+            function toggleLike() {
+                return axios.put(`${import.meta.env.VITE_BASE_URL}/posts/${id}/like`,{},
+                    { headers: { Authorization: `Bearer ${localStorage.getItem('user_token')}`}}
+                )}
+
+const {mutate: likePost , isPending: isLikeing}= useMutation({
+    mutationFn: toggleLike,
+    onSuccess: function () {
+        queryClient.invalidateQueries({queryKey:['postDetails' , id]})
+    }
+})
+
+
 
     const { mutate: createComment, isPending } = useMutation({
         mutationFn: addComment,
@@ -56,6 +67,6 @@ export default function usePostDetails(id) {
         }
     })
 
-    return { data, isLoading, isError, error, commentData, createComment, isPending }
+    return { data, isLoading, isError, error, commentData, createComment, isPending, likePost , isLikeing }
 }
 

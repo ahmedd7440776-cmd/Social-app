@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { handleAllPosts } from './Post.api'
-// import { ScaleLoader } from 'react-spinners'
+import USeLikePost from './USeLikePost'
 import LoadingScreen from './Loading'
 import PostCard from './PostCard'
 import CreatePost from '../components/CreatePost'
@@ -8,7 +8,7 @@ import { UserTokenProvider } from '../AuthUserContext'
 import { useQuery } from '@tanstack/react-query'
 
 export default function Posts() {
-
+const {likePost} = USeLikePost()
 
   // const [allPosts, setAllPosts] = useState(null)
   const { userdata } = useContext(UserTokenProvider)
@@ -34,7 +34,7 @@ if(isError){
     <>
       {userdata &&   <div className='pt-20 flex gap-3 flex-col'>
         <CreatePost  user={userdata}/>
-        {data && data.map((e) => <PostCard key={e.id} post={e} />)}
+        {data && data.map((e) => <PostCard key={e.id} post={e} onLike={()=> likePost(e.id)} />)}
       </div>}
     </>
 

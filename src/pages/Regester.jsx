@@ -13,27 +13,18 @@ import { regesterSchema } from './register.valdation.zod'
 export default function Regester() {
 
   // const [isLoading, setIsLoading] = useState(false)
-  const { handleSubmit, register, control, formState: { errors, isSubmitting } ,reset} = useForm({
+  const { handleSubmit, register,
+     control, formState: { errors, isSubmitting }, reset } = useForm({
     defaultValues: {
-      name: '',
-      username: '',
-      password: '',
-      email: '',
-      dateOfBirth: '',
-      gender: '',
-      rePassword: '',
-      value: '',
-
-    },
+      name: '', username: '', password: '', email: '',
+       dateOfBirth: '', gender: '', rePassword: '', value: '',},
     mode: 'all',
     resolver: zodResolver(regesterSchema)
   })
 
-
   const navgation = useNavigate()
   // call api inside this fun
   async function handleUserSubmit(userData) {
-    console.log(userData, 'done')
 
     toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signup`, userData), {
       loading: 'please wait...',
@@ -41,11 +32,9 @@ export default function Regester() {
       success: function (x) {
         reset()
         navgation('/login')
-       return <h1 className='text-green-500'>done</h1>
+        return <h1 className='text-green-500'>done</h1>
       },
-
       error: function (x) {
-    
         // console.log(x.errors);
 
         const state = x?.response?.status;
@@ -54,14 +43,9 @@ export default function Regester() {
           setTimeout(() => {
             navgation('/login')
           }, 1800);
-
           return <h1 className='text-red-500 text-center'>this account is already exists, redirecting you to login ...</h1>
         }
-        return <h1 className='text-red-500 text-center'>{message}</h1>
-
-
-
-      }
+        return <h1 className='text-red-500 text-center'>{message}</h1>}
     })
   }
   return (
