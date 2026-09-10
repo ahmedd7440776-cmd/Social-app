@@ -72,7 +72,8 @@ await toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signin`
 
   }
   return (
-    <form onSubmit={handleSubmit(handleUserSubmit)} className='min-w-xl flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
+    <form onSubmit={handleSubmit(handleUserSubmit)} 
+    className=' w-full max-w-md mx-auto flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
       <h1 className='text-center mx-auto rounded-2xl text-sky-500 pb-2 px-2 text-2xl font-meduim shadow-xl w-fit '>
         Login page</h1>
 
@@ -90,7 +91,7 @@ await toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signin`
       {/* {errors.password && <span className='text-red-500'>{errors.password.message}</span>} */}
       {/* className='focus:ring-red-400'    to chang the shadoe in input */}
 
-      <div className="flex  flex-col gap-2">
+      <div className="flex flex-col gap-2">
         <Button className='w-full' type='submit' isPending={isSubmitting}>
           {isSubmitting ? <Spinner color='current' size='lg' /> : <>  <Check />
             Submit</>}

@@ -12,24 +12,23 @@ import AuthProtected from './AuthProtected'
 import PostsDetails from './components/PostsDetails'
 
 export const router = createBrowserRouter([
-    {
-      path: '/', element: <Layout />, children: [
-        { index: true, element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
-        { path: '/posts', element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
-        { path: '/login', element: <AuthProtected><Login /> </AuthProtected>},
-        { path: '/postDetails/:id', element: <PostsDetails />},
-        { path: '/regester', element: <AuthProtected><Regester /> </AuthProtected> },
-        { path: '*', element: <NotFoundPage /> },
-      ] 
-    }
-  ])
+  {
+    path: '/', element: <Layout />, children: [
+      { index: true, element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
+      { path: '/posts', element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
+      { path: '/login', element: <AuthProtected><Login /> </AuthProtected> },
+      { path: '/postDetails/:id', element: <PostsDetails /> },
+      { path: '/regester', element: <AuthProtected><Regester /> </AuthProtected> },
+      { path: '*', element: <NotFoundPage /> },
+    ]
+  }
+])
 function App() {
   return (
 
-<div className='bg-green-500 w-full min-h-screen'>
+    <div className='bg-gray-900  min-h-screen  overflow-x-hidden'>
       <RouterProvider router={router} />
-
-</div>  )
+    </div>)
 
 }
 

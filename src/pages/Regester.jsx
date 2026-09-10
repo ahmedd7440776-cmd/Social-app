@@ -49,8 +49,9 @@ export default function Regester() {
     })
   }
   return (
-    <form onSubmit={handleSubmit(handleUserSubmit)} className='min-w-xl flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
-      <h1 className='text-center mx-auto rounded-2xl text-sky-500 pb-2 px-2 text-2xl font-meduim shadow-xl w-fit '>
+    <form onSubmit={handleSubmit(handleUserSubmit)} className='w-full max-w-2xl mx-auto flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
+      <h1 className=' text-center mx-auto rounded-2xl text-sky-500
+       pb-2 px-2 sm:text-2xl md:3xl whitespace-nowrap font-meduim shadow-xl  '>
         Complete This Form To Gain Access</h1>
 
 

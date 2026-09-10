@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <div className='min-h-screen bg-gray-900 flex justify-center items-center mt-10 '>
+      <div className=' w-full max-w-4xl mx-auto px-4 sm:px-5 lg:px-8 py-6 bg-gray-900  '>
         <Outlet />
         <Toaster />
       </div>

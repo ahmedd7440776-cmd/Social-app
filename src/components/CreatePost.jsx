@@ -58,23 +58,25 @@ export default function CreatePost({ user }) {
 
     return (
         <>
-            <Card className="max-w-4xl w-full border border-red-600 bg-gray-900/29 ">
+            <Card className="max-w-4xl w-full border mx-auto overflow-hidden border-red-600 bg-gray-900/29 ">
                 <Card.Header>
-                    <Card.Title className='flex items-center gap-3 mb-3 pb-3 border-b border-white'>
-                        <span className='capitalize text-xl text-white'>Goodmorrning {name} what's in your mind...</span>
-                        <button
-                            type='button'
-                            onClick={() => setIsModelOPen(true)}
-                            className='text-sm bg-sky-500 hover:bg-sky-700 text-white px-3 py-1.5 rounded-lg transition'>
-                            Edit Profile
-                        </button>
-                        <button
-                            type='button'
-                            onClick={() => setIsPasswordModelOpen(true)}
-                            className='text-xs bg-gray-700 hover:bg-gray-900 text-white px-3 py-1.5 rounded-lg transition'
-                        >
-                            Change Password
-                        </button>
+                    <Card.Title className='flex  flex-col justify-between  sm:items-center  gap-3 mb-3 pb-3 border-b border-white'>
+                        <span className='capitalize text-base sm:text-xl wrap-break-word text-white'>Goodmorrning {name} what's in your mind...</span>
+                      <div className='flex items-center gap-2 self-start sm:self-auto'>
+                            <button
+                                type='button'
+                                onClick={() => setIsModelOPen(true)}
+                                className='text-sm sm:text-sm bg-sky-500 hover:bg-sky-700 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'>
+                                Edit Profile
+                            </button>
+                            <button
+                                type='button'
+                                onClick={() => setIsPasswordModelOpen(true)}
+                                className='text-xs bg-gray-700 hover:bg-gray-900 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'
+                            >
+                                Change Password
+                            </button>
+                      </div>
                     </Card.Title>
                 </Card.Header>
 
@@ -83,9 +85,9 @@ export default function CreatePost({ user }) {
 
 
 
-                        <div className='flex items-center gap-4 mb-5'>
+                        <div className='flex items-center gap-4 sm:gap-4 mb-5'>
 
-                            <div className='cursor-pointer hover:opacity-80 transition'
+                            <div className='cursor-pointer hover:opacity-80 transition shrink-0'
                                 onClick={() => setIsModelOPen(true)}
                                 title='Click to updata  profile photo'
                             >
@@ -95,13 +97,15 @@ export default function CreatePost({ user }) {
                                 </Avatar>
                             </div>
 
-                            <input {...register('body')} type="text" placeholder='Create your post' className=' grow border bg-gray-50 p-2 rounded-xl border-gray-300' />
-                            <DocumentUpload onClick={_ => uploadImage.current?.click()} size="40" color='#008600' className='cursor-pointer' />
+                            <input {...register('body')} type="text" placeholder='Create a post...'
+                             className=' grow border bg-gray-50 p-2 rounded-xl border-gray-300 text-sm sm:text-base min-w-0' />
+                            <DocumentUpload onClick={_ => uploadImage.current?.click()} size="40" color='#008600'
+                             className='cursor-pointer shrink-0' />
                         </div>
 
 
-                        <img className='3/4 mx-auto rounded-3xl mb-2' src={uploadUserImagee} />
-                        <Button type='submit' className='w-full'>Create Post</Button>
+                        <img className='sm:w-3/4 w-full  mx-auto rounded-3xl mb-2 object-cover max-h-80' src={uploadUserImagee} />
+                        <Button type='submit' className='bg-sky-600 text-white font-semibold py-2 rounded-xl w-full'>Create Post</Button>
                     </form>
 
                     <input type="file" hidden ref={uploadImage} onChange={e => {
