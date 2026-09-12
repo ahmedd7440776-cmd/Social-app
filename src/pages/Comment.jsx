@@ -50,7 +50,7 @@ export default function Comment({ commentt, postId }) {
                         <Avatar.Fallback>JD</Avatar.Fallback>
                     </Avatar>
                     <div >
-                        <h2 className='capitalize'>{name}</h2>
+                        <h2 className='capitalize lg:text-2xl text-l sm:text-[15px] md-text-xl'>{name}</h2>
                         <h4> {createdAt ? new Date(createdAt).toLocaleDateString().replace(/\//g, '-') : ''}</h4>
                     </div>
 
@@ -61,13 +61,14 @@ export default function Comment({ commentt, postId }) {
                             setIsEditMod(!isEditMod);
                             setEditContent(content);
                         }} // to set the origanil text incase you cancled.... 
-                            className='text-blue-600 font-medium hover:underline'>
+                            className='text-blue-600  text-l sm:text-xl md:text-[20]  hover:underline'>
                             {isEditMod ? 'Cancel' : 'Edit'}
                         </button>
+
                         <button
                             onClick={handleDelComment}
                             disabled={isDeleteing}
-                            className='text0red-600 font-medium hover:underline disabled:opacity-50'>
+                            className='text-red-600 text-l sm:text-xl md:text-[20] hover:underline disabled:opacity-50'>
 
                             {isDeleteing ? 'Deleting...' : 'Delete'}
                         </button>

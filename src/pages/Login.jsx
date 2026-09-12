@@ -72,36 +72,39 @@ await toast.promise(axios.post(`${import.meta.env.VITE_BASE_URL}/users/signin`
 
   }
   return (
-    <form onSubmit={handleSubmit(handleUserSubmit)} 
-    className=' w-full max-w-md mx-auto flex shadow-2xl  flex-col gap-4 p-9 my-16 rounded-2xl bg-white' >
-      <h1 className='text-center mx-auto rounded-2xl text-sky-500 pb-2 px-2 text-2xl font-meduim shadow-xl w-fit '>
-        Login page</h1>
+    <div className='flex justify-center items-center flex-col w-full mx-auto h-dvh'>
+  
+      <form onSubmit={handleSubmit(handleUserSubmit)}
+        className=' w-full md:max-w-2xl mx-auto flex shadow-2xl  flex-col gap-4 sm:p-6 p-3 rounded-2xl bg-white' >
+        <h1 className='text-center mx-auto rounded-2xl text-sky-500 pb-2 px-2 text-2xl font-meduim shadow-xl w-fit '>
+          Login page</h1>
 
-      {/* email  */}
-      <TextField type='email'>
-        <Label>Email</Label>
-        <Input {...register('email')} placeholder='Enter your email.... (example@gmail.com)' />
-      </TextField>
+        {/* email  */}
+        <TextField type='email'>
+          <Label>Email</Label>
+          <Input {...register('email')} className=' text-sm sm:text-2xl md:text-[22px] p-1 sm:p-2 md:p-3' placeholder='Enter your email.... (example@gmail.com)' />
+        </TextField>
 
-      {/* password  */}
-      <TextField type='password'>
-        <Label>Password</Label>
-        <Input {...register('password')} autoComplete='off' placeholder='Enter your password...' />
-      </TextField>
-      {/* {errors.password && <span className='text-red-500'>{errors.password.message}</span>} */}
-      {/* className='focus:ring-red-400'    to chang the shadoe in input */}
+        {/* password  */}
+        <TextField type='password'>
+          <Label>Password</Label>
+          <Input {...register('password')}  className='text-sm sm:text-xl md:text-[22px] p-1 sm:p-2 md:p-3  '  autoComplete='off' placeholder='Enter your password...' />
+        </TextField>
+        {/* {errors.password && <span className='text-red-500'>{errors.password.message}</span>} */}
+        {/* className='focus:ring-red-400'    to chang the shadoe in input */}
 
-      <div className="flex flex-col gap-2">
-        <Button className='w-full' type='submit' isPending={isSubmitting}>
-          {isSubmitting ? <Spinner color='current' size='lg' /> : <>  <Check />
-            Submit</>}
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button className='w-full' type='submit' isPending={isSubmitting}>
+            {isSubmitting ? <Spinner color='current' size='lg' /> : <>  <Check />
+              Submit</>}
+          </Button>
 
-        <Button type='reset' className='w-full' variant='danger-soft'>
-          Reset
-        </Button>
-      </div>
-    </form>
+          <Button type='reset' className='w-full' variant='danger-soft'>
+            Reset
+          </Button>
+        </div>
+      </form>
+  </div>
 
   )
 }

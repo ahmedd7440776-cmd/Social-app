@@ -23,9 +23,9 @@ export default function Navbar() {
         <>
 
             <nav className=" bg-blue-900 shadow-xl  fixed w-full z-20 top-0 inset-s-0 border-b ">
-                <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-3">
                     <Link to="" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Aave className='ms-9' size="62" color="#e70b0b" />
+                        <Aave className='ms-9 w-12 h-12  sm:w-15 sm:h-15 md:w-18 md:h-18 lg:w-14 lg-h-14' color="#e70b0b" />
                     </Link>
 
 
@@ -41,8 +41,8 @@ export default function Navbar() {
                                 </Avatar>
                             </button> </> :
                             <>
-                                <Link className='me-3 rounded-2xl bg-blue-400 px-2 py-1 text-white border-2' to='login'>Login</Link>
-                                <Link className='me-3 rounded-2xl bg-blue-400 px-2 py-1 text-white border-2' to='regester'>Regester</Link>
+                                <Link className=' text-sm sm-text-[17px] md:text-[19px]  me-3 rounded-2xl bg-blue-400 px-2 py-0.75 text-white border-2' to='login'>Login</Link>
+                                <Link className=' text-sm sm-text-[17px] md:text-[19px]  me-3 rounded-2xl bg-blue-400 px-2 py-0.75 text-white border-2' to='regester'>Regester</Link>
                             </>
                         }
                         {/* Dropdown menu */}

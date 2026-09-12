@@ -40,13 +40,13 @@ export default function PostCard({ post, PostsDetails, onLike }) {
             <Card.Header>
                 <Card.Title className='flex items-center justify-between  gap-2 mb-3 pb-3 border-b border-gray-400'>
                     <div className='flex items-center gap-3'>
-                        <Avatar>
-                            <Avatar.Image alt="John Doe" src={photo} />
+                        <Avatar className='w-8 h-8  sm:w-11 sm:h-11 md:w-15 md:h-15'>
+                            <Avatar.Image alt="John Doe "   src={photo} />
                             <Avatar.Fallback>TITO</Avatar.Fallback>
                         </Avatar>
                         <div>
-                            <h2 className='capitalize'>_{post.user.name}_</h2>
-                            <h4> {new Date(createdAt).toLocaleDateString().replace(/\//g, '-')}</h4>
+                            <h2 className='capitalize text-[15]  sm:text-[17px] md:text-[18px] '>_{post.user.name}_</h2>
+                            <h4 className='text-[16] sm:text-xl md:text-[22]'> {new Date(createdAt).toLocaleDateString().replace(/\//g, '-')}</h4>
                         </div>
                     </div>
 
@@ -78,20 +78,20 @@ export default function PostCard({ post, PostsDetails, onLike }) {
                     {isEditMode ? (<div className='flex flex-col sm:flex-row gap-2'>
                         <input value={editBody}
                             onChange={(e) => setEditBody(e.target.value)}
-                            className='flex-1 border rounded-lg px-2 py-1' />
+                            className='flex-1 border rounded-lg px-2 py-1 text-[16px] sm:text-[19px] ' />
                         <div className='flex gap-2 justify-end'>
 
-                            <button onClick={handleSavedEdit} disabled={isEditing} className='text-blue-500'>
+                            <button onClick={handleSavedEdit} disabled={isEditing} className='text-blue-500 text-[16px] sm:text-[20px]'>
                                 {isEditing ? 'Saving...' : 'Save'}
                             </button>
-                            <button className='text-gray-500' onClick={() => setIsEditMode(false)}>
+                            <button className='text-red-700 text-[16px] sm:text-[19px] ' onClick={() => setIsEditMode(false)}>
                                 Cancel
                             </button>
                         </div>
 
                     </div>) :
                         <>{image && <img className='w-full rounded-lg mb-2 object-cover max-h-96 ' src={image} alt={body} />}
-                            <p className='text-sm sm:text-base *:'>
+                            <p className='text-sm sm:text-[16px] md:text-[20px]'>
                                 {body}
                             </p>
 
@@ -103,7 +103,7 @@ export default function PostCard({ post, PostsDetails, onLike }) {
                 <div className='flex justify-between items-center w-full'>
                     <div className='flex gap-3 items-center  '>
 
-                        <div className='cursor-pointer flex items-center gap-1' onClick={() => {onLike();}}>
+                        <div className='cursor-pointer flex items-center gap-1 text-sm sm:text-[17px] md:text[20px] lg:text-[22px]' onClick={() => {onLike();}}>
                             <Like1 size='40' color='#249640'
                                 variant={isLiked ? 'Bold' : 'Linear'}
                             />
@@ -112,10 +112,10 @@ export default function PostCard({ post, PostsDetails, onLike }) {
                         <Share size='40' color='#117689' />
                     </div>
                     <div className='flex items-center gap-3'>
-                        {!PostsDetails && <Link className='gap-3 flex items-center text-sm ' to={`/postDetails/${postId}`}>
+                        {!PostsDetails && <Link className='gap-3 flex items-center text-sm  md:text-xl' to={`/postDetails/${postId}`}>
                             {commentsCount}
                             <MessageText1 size="32" color="#990000" />
-                            Show Post</Link>}
+                            <span className='text-[15px] sm:text-[17px] md:text-[20px] lg:text-[21px] text-green-900'>Show Post</span></Link>}
                     </div>
                 </div>
             </Card.Footer>

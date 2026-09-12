@@ -61,18 +61,18 @@ export default function CreatePost({ user }) {
             <Card className="max-w-4xl w-full border mx-auto overflow-hidden border-red-600 bg-gray-900/29 ">
                 <Card.Header>
                     <Card.Title className='flex  flex-col justify-between  sm:items-center  gap-3 mb-3 pb-3 border-b border-white'>
-                        <span className='capitalize text-base sm:text-xl wrap-break-word text-white'>Goodmorrning {name} what's in your mind...</span>
+                        <span className='capitalize text-[15px] lg:text-[25px] md:text-[22px] md:py-2 sm:text-[17px] text-sky-400 wrap-break-word '>Goodmorrning <span className='text-white'>{name}</span> what's in your mind...</span>
                       <div className='flex items-center gap-2 self-start sm:self-auto'>
                             <button
                                 type='button'
                                 onClick={() => setIsModelOPen(true)}
-                                className='text-sm sm:text-sm bg-sky-500 hover:bg-sky-700 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'>
+                                className='md:text-xl sm:text-sm bg-sky-500 hover:bg-sky-700 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'>
                                 Edit Profile
                             </button>
                             <button
                                 type='button'
                                 onClick={() => setIsPasswordModelOpen(true)}
-                                className='text-xs bg-gray-700 hover:bg-gray-900 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'
+                                className='md:text-xl sm:text-sm  bg-gray-700 hover:bg-gray-900 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'
                             >
                                 Change Password
                             </button>
@@ -85,7 +85,7 @@ export default function CreatePost({ user }) {
 
 
 
-                        <div className='flex items-center gap-4 sm:gap-4 mb-5'>
+                        <div className='flex items-center gap-4 sm:gap-4 mb-2'>
 
                             <div className='cursor-pointer hover:opacity-80 transition shrink-0'
                                 onClick={() => setIsModelOPen(true)}
@@ -97,15 +97,16 @@ export default function CreatePost({ user }) {
                                 </Avatar>
                             </div>
 
-                            <input {...register('body')} type="text" placeholder='Create a post...'
-                             className=' grow border bg-gray-50 p-2 rounded-xl border-gray-300 text-sm sm:text-base min-w-0' />
+                            <input {...register('body')} type="text"  placeholder='Create your own post....'
+                             className=' grow border bg-gray-50  text-gray-900 rounded-xl border-gray-300 text-sm sm:text-base p-1 md:ps-2 md:text-[19px] md:p-2 min-w-0' />
                             <DocumentUpload onClick={_ => uploadImage.current?.click()} size="40" color='#008600'
                              className='cursor-pointer shrink-0' />
                         </div>
 
 
-                        <img className='sm:w-3/4 w-full  mx-auto rounded-3xl mb-2 object-cover max-h-80' src={uploadUserImagee} />
-                        <Button type='submit' className='bg-sky-600 text-white font-semibold py-2 rounded-xl w-full'>Create Post</Button>
+                        <Button type='submit' className='mb-3 bg-sky-600 text-white font-semibold py-2 rounded-xl w-full'>Create Post</Button>
+                       
+                        <img className='sm:w-3/4 w-full  mx-auto rounded-4xl mb-2 object-cover max-h-80  border' src={uploadUserImagee} />
                     </form>
 
                     <input type="file" hidden ref={uploadImage} onChange={e => {

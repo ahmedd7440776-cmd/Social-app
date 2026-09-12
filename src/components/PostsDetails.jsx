@@ -49,11 +49,11 @@ export default function PostsDetails() {
                             {...register('content')}
                             placeholder='Add your comment'
                             type="text"
-                            className='flex-1 border-2 rounded-lg px-3 py-2 border-red-600 bg-white text-black ' />
+                            className='flex-1 border-2 rounded-lg px-3 py-2  border-red-600 bg-white text-black ' />
 
                         <DocumentUpload onClick={() => uploadCommentImage.current?.click()}
                             size='32'
-                            color='#697689'
+                            color='#fff'
                             className='cursor-pointer'
                         />
 
