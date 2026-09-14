@@ -62,21 +62,7 @@ export default function CreatePost({ user }) {
                 <Card.Header>
                     <Card.Title className='flex  flex-col justify-between  sm:items-center  gap-3 mb-3 pb-3 border-b border-white'>
                         <span className='capitalize text-[15px] lg:text-[25px] md:text-[22px] md:py-2 sm:text-[17px] text-sky-400 wrap-break-word '>Goodmorrning <span className='text-white'>{name}</span> what's in your mind...</span>
-                      <div className='flex items-center gap-2 self-start sm:self-auto'>
-                            <button
-                                type='button'
-                                onClick={() => setIsModelOPen(true)}
-                                className='md:text-xl sm:text-sm bg-sky-500 hover:bg-sky-700 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'>
-                                Edit Profile
-                            </button>
-                            <button
-                                type='button'
-                                onClick={() => setIsPasswordModelOpen(true)}
-                                className='md:text-xl sm:text-sm  bg-gray-700 hover:bg-gray-900 text-white px-3 py-1.5 rounded-lg transition whitespace-nowrap'
-                            >
-                                Change Password
-                            </button>
-                      </div>
+                   
                     </Card.Title>
                 </Card.Header>
 
@@ -119,14 +105,14 @@ export default function CreatePost({ user }) {
                 </Card.Content>
             </Card>
 
-            <UpdateProfileModal
+            {/* <UpdateProfileModal
              isOpen={isModelOPen}
                 onClose={() => setIsModelOPen(false)}
             />
             <ChangePasswordModal
             isOpen={isPasswordModelOpen}
             onClose={()=> setIsPasswordModelOpen(false)}
-            />
+            /> */}
         </>
 
     )

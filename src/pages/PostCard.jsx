@@ -13,7 +13,7 @@ export default function PostCard({ post, PostsDetails, onLike }) {
     const { _id: postId, commentsCount, createdAt,
         user: { name, photo, _id: postOwnerId }, body, image, topComment, likes, likesCount } = post
 
-    console.log(post);
+    // console.log(post);
 
     const { userdata } = useContext(UserTokenProvider);
     const currentUserId = userdata?.data?.user?.id;

@@ -10,12 +10,14 @@ import NotFoundPage from './pages/NotFoundPage'
 import ProtectedRoute from './protectedRoute'
 import AuthProtected from './AuthProtected'
 import PostsDetails from './components/PostsDetails'
+import Profile from './pages/Profile'
 
 export const router = createBrowserRouter([
   {
     path: '/', element: <Layout />, children: [
       { index: true, element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
       { path: '/posts', element: <ProtectedRoute > <Posts /> </ProtectedRoute> },
+      { path: '/profile', element: <ProtectedRoute > <Profile /> </ProtectedRoute> },
       { path: '/login', element: <AuthProtected><Login /> </AuthProtected> },
       { path: '/postDetails/:id', element: <PostsDetails /> },
       { path: '/regester', element: <AuthProtected><Regester /> </AuthProtected> },

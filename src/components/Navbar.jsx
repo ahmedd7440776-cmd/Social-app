@@ -3,6 +3,7 @@ import { Aave, Slack, Thorchain } from 'iconsax-reactjs'
 import React, { useContext, useState } from 'react'
 import { Link, NavLink, useNavigate, useNavigation } from 'react-router-dom'
 import { UserTokenProvider } from '../AuthUserContext'
+// import Profile from '../pages/Profile'
 export default function Navbar() {
 
     const [isDashOpen, setIsDashOpen] = useState(false)
@@ -54,12 +55,15 @@ export default function Navbar() {
 
 
                             <ul className="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
-                                <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " >Dashboard
+                              <NavLink to='/'>
+                                    <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " >Home
+                                    </li> 
+                              </NavLink>
+                                <NavLink to='/profile'> 
+                                <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded  " > Profile 
                                 </li>
-                                <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " >Settings
-                                </li>
-                                <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " >Earnings
-                                </li>
+                                </NavLink>
+                               
                                 <li onClick={_ => handelSingOut()} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " > singin-out
                                 </li>
                             </ul>

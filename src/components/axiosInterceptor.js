@@ -9,17 +9,20 @@ const axiosInterceptor = axios.create({
 
 axiosInterceptor.interceptors.request.use(
   function (request) {
-    if (localStorage.getItem("user_token")) {
-      request.headers.token = localStorage.getItem("user_token");
-    }
+    // if (localStorage.getItem("user_token")) {
+    //   request.headers.token = localStorage.getItem("user_token");
+    // }
     // console.log(request);
-
+   
+    const  token = localStorage.getItem('user_token')
+   if (token) {
+    request.headers.token = token
+   }
+   
     return request;
   },
-
   function (error) {
     // console.log(Promise.reject(error));
-
     return Promise.reject(error);
   },
 );
@@ -27,7 +30,6 @@ axiosInterceptor.interceptors.request.use(
 axiosInterceptor.interceptors.response.use(
   function (response) {
     // console.log(response);
-
     return response;
   },
   function (error) {
