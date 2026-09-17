@@ -8,15 +8,16 @@ import { useState } from "react"
 
 const fetchProfileAndPosts = async () => {
 
-  //1- get users profile data   
+  //1- get user's profile data   
   const { data: userRes, } = await axiosInterceptor.get('/users/profile-data');
 
+  //  only for user id thoes two
   const user = userRes?.data?.user
   const userId = user?._id || user?.id
 
   if (!userId) { return { user: null, posts: [] } }
 
-  //2- get users posts
+  //2- get user's posts
   const { data: postRes } = await axiosInterceptor.get(`/users/${userId}/posts`)
   const postList = postRes?.data?.posts || postRes?.posts || postRes?.data || []
 
@@ -32,10 +33,12 @@ export default function Profile() {
   const [isUpdataProfileOpen, setIsUpdataProfileOpen] = useState(false)
   const [isChangPasswordOpen, setIsChangPasswordOpen] = useState(false)
 
+  //  the return from the uper fun commes here as data in usequery so data = user and posts
   const { data, isPending, isError, error } = useQuery({
     queryKey: ['userProfile'],
     queryFn: fetchProfileAndPosts,
   })
+
 
   if (isPending) {
     return (
@@ -58,10 +61,6 @@ export default function Profile() {
   const posts = data?.posts || []
 
 
-
-
-
-
   return (
     <div className="w-full space-y-6 my-23">
       {/* users card */}
@@ -72,10 +71,10 @@ export default function Profile() {
           className="w-24 h-24 rounded-full object-cover border-2 border-blue-500"
         />
         <div className="text-center md:text-right space-y-2 ">
-          <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl text-white">{user?.name}</h1>
-          <p className="text-sm sm:text-[16px] md:text-[18px] lg:text-[22px] text-gray-400">{user?.email}</p>
+          <h1 className="text-sm sm:text-lg md:text-xl lg:text-2xl text-green-500">{user?.name}</h1>
+          <p className="text-sm sm:text-[16px] md:text-[18px] lg:text-[22px] text-red-400">{user?.email}</p>
           <div className="inline-block bg-600/20 text-blue-400 rounded-full border border-l-blue-500/30 py-1 px-3 text-xs sm:text-sm md:text-lg lg:text-xl">
-            Number of posts: {posts?.length || 0}
+            Number of posts: <span className="text-orange-400">{posts?.length || 0}</span>
           </div>
         </div>
       </div>
@@ -86,15 +85,15 @@ export default function Profile() {
       <div className="flex flex-col justify-end sm:flex-row gap-3 w-full md:w-auto ">
         <button
           onClick={() => setIsChangPasswordOpen(true)}
-          className= "px-2 bg-blue-600 hover:bg-blue-800 text-white py-2 rounded-lg transition duration-200 text-sm sm:text-base"
-        >Edit Profile
+          className="px-2  bg-green-600 hover:bg-green-800  text-white py-2 rounded-lg transition duration-200 text-sm sm:text-base"
+        >Change password
         </button>
 
-<button
-onClick={()=> setIsUpdataProfileOpen(true)}
-          className= "px-2 bg-gray-600 hover:bg-gray-800 text-white py-2 rounded-lg transition duration-200 text-sm sm:text-base"
+        <button
+          onClick={() => setIsUpdataProfileOpen(true)}
+          className="px-2  bg-blue-600 hover:bg-blue-800  text-white py-2 rounded-lg transition duration-200 text-sm sm:text-base"
 
->Change password</button>
+        >Edit Profile</button>
 
       </div>
 
@@ -102,7 +101,7 @@ onClick={()=> setIsUpdataProfileOpen(true)}
       {/*  post section */}
 
       <div>
-        <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[23px] font-bold text-white mb-4 border-b border-gray-800 pb-2">
+        <h2 className="text-[17px] sm:text-[19px] md:text-[21px] lg:text-[23px] font-bold text-orange-500 mb-4 border-b border-gray-800 pb-2">
           My Posts
 
         </h2>
@@ -119,14 +118,14 @@ onClick={()=> setIsUpdataProfileOpen(true)}
 
 
       <UpdateProfileModal isOpen={isUpdataProfileOpen}
-onClose={()=> setIsUpdataProfileOpen(false)}
-CurrentUser={user}
-/> 
+        onClose={() => setIsUpdataProfileOpen(false)}
+        CurrentUser={user}
+      />
 
-<ChangePasswordModal 
+      <ChangePasswordModal
         isOpen={isChangPasswordOpen}
-onClose={()=>setIsChangPasswordOpen(false)}
-/>
+        onClose={() => setIsChangPasswordOpen(false)}
+      />
     </div>
 
 

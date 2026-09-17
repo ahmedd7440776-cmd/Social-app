@@ -36,8 +36,8 @@ export default function Navbar() {
                                 onClick={_ => setIsDashOpen(!isDashOpen)}
                                 type="button" className="flex  text-sm bg-neutral-primary me rounded-full md:me-6  focus:ring-neutral-tertiary"
                                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                                <Avatar >
-                                    <Avatar.Image alt="John Doe" src={userdata?.data?.user?.photo} />
+                                <Avatar className='object-cover border-2 border-red-500 '>
+                                    <Avatar.Image alt="John Doe"  src={userdata?.data?.user?.photo} />
                                     <Avatar.Fallback>JD</Avatar.Fallback>
                                 </Avatar>
                             </button> </> :
@@ -49,22 +49,22 @@ export default function Navbar() {
                         {/* Dropdown menu */}
                         <div className={`z-50  ${isDashOpen ? 'block' : 'hidden'} absolute text-white bg-gray-900 right-0 top-full bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44" id="user-dropdown`}>
                             <div className="px-4 py-3 text-sm border-b border-default">
-                                <span className="block text-heading font-medium capitalize">{userdata?.data?.user?. name}</span>
+                                <span className="block text-heading font-medium capitalize text-yellow-300">{userdata?.data?.user?. name} is my name??</span>
                                 <span className="block text-body truncate">{userdata?.data?.user?.email}</span>
                             </div>
 
 
                             <ul className="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
                               <NavLink to='/'>
-                                    <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " >Home
+                                    <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 hover:text-green-800 cursor-pointer rounded text-green-500 " >Home
                                     </li> 
                               </NavLink>
                                 <NavLink to='/profile'> 
-                                <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded  " > Profile 
+                                    <li className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded  hover:text-orange-900 text-orange-500 " > Profile 
                                 </li>
                                 </NavLink>
                                
-                                <li onClick={_ => handelSingOut()} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded " > singin-out
+                                <li onClick={_ => handelSingOut()} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:bg-gray-400 cursor-pointer rounded   hover:text-red-900 text-red-500/90 " > Sing-out
                                 </li>
                             </ul>
                         </div>

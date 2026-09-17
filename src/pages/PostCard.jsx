@@ -46,7 +46,7 @@ export default function PostCard({ post, PostsDetails, onLike }) {
                         </Avatar>
                         <div>
                             <h2 className='capitalize text-[15]  sm:text-[17px] md:text-[18px] '>_{post.user.name}_</h2>
-                            <h4 className='text-[16] sm:text-xl md:text-[22]'> {new Date(createdAt).toLocaleDateString().replace(/\//g, '-')}</h4>
+                            <h4 className='text-[10px] sm:text-[13px] md:text-[15px]'> {new Date(createdAt).toLocaleDateString().replace(/\//g, '-')}</h4>
                         </div>
                     </div>
 
@@ -57,8 +57,8 @@ export default function PostCard({ post, PostsDetails, onLike }) {
                         {showMenu && (
                             <div className='absolute right-0 top-6 bg-white shadow-lg rounded-lg z-10 w-32'>
                                 <button onClick={() => { setIsEditMode(true); setShowMenu(false) }}
-                                    className='flex items-center gap-2 px-3 py-2 w-full hover:bg-gray-100 text-sm'>
-                                    <Edit2 size='18' />Edit
+                                    className='flex items-center gap-2 px-3 py-2 w-full hover:bg-gray-100 text-sm  text-green-600'>
+                                    <Edit2  size='18' />Edit
                                 </button>
                                 <button onClick={() => { handleDelete(); setShowMenu(false) }}
                                     className='flex items-center gap-2 px-3 py-2 w-full hover:bg-gray-100 text-red-500'>

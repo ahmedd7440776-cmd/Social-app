@@ -61,7 +61,7 @@ export default function CreatePost({ user }) {
             <Card className="max-w-4xl w-full border mx-auto overflow-hidden border-red-600 bg-gray-900/29 ">
                 <Card.Header>
                     <Card.Title className='flex  flex-col justify-between  sm:items-center  gap-3 mb-3 pb-3 border-b border-white'>
-                        <span className='capitalize text-[15px] lg:text-[25px] md:text-[22px] md:py-2 sm:text-[17px] text-sky-400 wrap-break-word '>Goodmorrning <span className='text-white'>{name}</span> what's in your mind...</span>
+                        <span className='capitalize text-[15px] lg:text-[25px] md:text-[22px] md:py-2 sm:text-[17px] text-sky-400 wrap-break-word '>Goodmorrning <span className='text-orange-600'>{name}</span> what's in your mind...</span>
                    
                     </Card.Title>
                 </Card.Header>
@@ -90,7 +90,7 @@ export default function CreatePost({ user }) {
                         </div>
 
 
-                        <Button type='submit' className='mb-3 bg-sky-600 text-white font-semibold py-2 rounded-xl w-full'>Create Post</Button>
+                        <Button type='submit' className='mb-3 text-white font-semibold py-2 rounded-xl w-full '>Create Post</Button>
                        
                         <img className='sm:w-3/4 w-full  mx-auto rounded-4xl mb-2 object-cover max-h-80  border' src={uploadUserImagee} />
                     </form>
